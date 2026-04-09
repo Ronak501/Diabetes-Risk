@@ -84,35 +84,14 @@
       </section>
 
       <section class="panel">
-        <h2>Project Diagrams</h2>
-        <p class="muted">These visuals help explain the system clearly during presentation.</p>
-        <div class="diagram-grid">
-          <div class="diagram-card">
-            <h3>System Architecture</h3>
-            <div class="mermaid">
-flowchart LR
-  A[Student Login] --> B[Frontend Dashboard]
-  B --> C[Demo Mode / Manual Input]
-  C --> D[Flask API]
-  D --> E[Preprocessing]
-  E --> F[Random Forest Prediction]
-  F --> G[Result Card]
-  G --> H[Download as PDF]
-            </div>
-          </div>
-          <div class="diagram-card">
-            <h3>Prediction Workflow</h3>
-            <div class="mermaid">
-flowchart TD
-  A[Enter Patient Details] --> B[Validate Input]
-  B --> C[Scale Features]
-  C --> D[Predict with Model]
-  D --> E{Risk Level}
-  E -->|Low| F[Low Risk Card]
-  E -->|Moderate| G[Moderate Risk Card]
-  E -->|High| H[High Risk Card]
-            </div>
-          </div>
+        <h2>Project Image</h2>
+        <p class="muted">This section displays the uploaded project diagram image.</p>
+        <div class="project-image-wrap">
+          <img
+            src="{{ url_for('static', filename='Diagram.png') }}"
+            alt="Project diagram"
+            class="project-image"
+          >
         </div>
       </section>
 

@@ -208,6 +208,20 @@ h3 {
   font-size: 1rem;
 }
 
+.project-image-wrap {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 10px;
+  background: #fff;
+}
+
+.project-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
 .mermaid {
   overflow-x: auto;
   background: #fffdf8;

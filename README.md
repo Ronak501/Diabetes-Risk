@@ -102,27 +102,34 @@ The website shows diagrams using Mermaid, and the README includes the same diagr
 ### System Architecture Diagram
 
 ```mermaid
-flowchart LR
-  A[Student Login] --> B[Frontend Dashboard]
-  B --> C[Demo Mode / Manual Input]
-  C --> D[Flask API]
-  D --> E[Preprocessing]
-  E --> F[Random Forest Prediction]
-  F --> G[Result Card]
-  G --> H[Download as PDF]
+flowchart TD
+  n1["Student Login"]
+  n2["Frontend Dashboard"]
+  n3["Demo Mode and Manual Input"]
+  n4["Flask API"]
+  n5["Preprocessing"]
+  n6["Random Forest Prediction"]
+  n7["Result Card"]
+  n8["Download as PDF"]
+  n1 --> n2 --> n3 --> n4 --> n5 --> n6 --> n7 --> n8
 ```
 
 ### Prediction Workflow Diagram
 
 ```mermaid
 flowchart TD
-  A[Enter Patient Details] --> B[Validate Input]
-  B --> C[Scale Features]
-  C --> D[Predict with Model]
-  D --> E{Risk Level}
-  E -->|Low| F[Low Risk Card]
-  E -->|Moderate| G[Moderate Risk Card]
-  E -->|High| H[High Risk Card]
+  p1["Enter Patient Details"]
+  p2["Validate Input"]
+  p3["Scale Features"]
+  p4["Predict with Model"]
+  p5["Risk Level"]
+  p6["Low Risk Card"]
+  p7["Moderate Risk Card"]
+  p8["High Risk Card"]
+  p1 --> p2 --> p3 --> p4 --> p5
+  p5 --> p6
+  p5 --> p7
+  p5 --> p8
 ```
 
 ### Data Pipeline Diagram
