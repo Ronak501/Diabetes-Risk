@@ -143,7 +143,7 @@ flowchart LR
 PDS/
   app.py
   pds_oep.py
-  requirements.txt
+  pyproject.toml
   README.md
   templates/
     index.html
@@ -155,19 +155,19 @@ PDS/
 ## How to Run Locally
 
 1. Open terminal in the project folder.
-2. Activate the virtual environment:
+1. Activate the virtual environment:
 
    .\.venv\Scripts\Activate.ps1
 
-3. Install packages:
+1. Install packages:
 
-   pip install -r requirements.txt
+  pip install .
 
-4. Start the web app:
+1. Start the web app:
 
    python app.py
 
-5. Open the browser:
+1. Open the browser:
 
    [http://127.0.0.1:5000](http://127.0.0.1:5000)
 
@@ -184,7 +184,7 @@ PDS/
 
 Recommended platform: Render
 
-- Build Command: `pip install -r requirements.txt`
+- Build Command: `pip install .`
 - Start Command: `gunicorn app:app`
 - Publish Directory: leave empty or use `.` if required by the form
 - Runtime file: `runtime.txt` with `python-3.11.9`
