@@ -37,6 +37,14 @@ const appState = {
   latestPrediction: null,
 };
 
+if (window.mermaid) {
+  window.mermaid.initialize({
+    startOnLoad: true,
+    theme: "neutral",
+    securityLevel: "loose",
+  });
+}
+
 async function loadSummary() {
   const response = await fetch("/api/summary");
   if (!response.ok) {
