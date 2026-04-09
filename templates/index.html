@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Diabetes Risk Analytics Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <div class="bg-shape shape-a"></div>
+  <div class="bg-shape shape-b"></div>
+
+  <main class="container">
+    <section id="loginShell" class="panel login-shell">
+      <div class="login-copy">
+        <p class="kicker">Final OEP Project Showcase</p>
+        <h1>Diabetes Risk Prediction Dashboard</h1>
+        <p>
+          A polished presentation website with live prediction, demo cases, and a printable result card.
+        </p>
+      </div>
+
+      <form id="loginForm" class="login-form">
+        <h2>Student Login</h2>
+        <label>
+          Your Name
+          <input type="text" name="studentName" placeholder="Enter your name" required>
+        </label>
+        <label>
+          Roll Number
+          <input type="text" name="rollNumber" placeholder="Enter roll no." required>
+        </label>
+        <button type="submit">Enter Project</button>
+        <p class="muted small">Branding appears on the dashboard and the downloadable result card.</p>
+      </form>
+    </section>
+
+    <section id="appShell" class="app-shell hidden">
+      <header class="hero panel">
+        <div class="hero-topline">
+          <div>
+            <p class="kicker">Final OEP Project Showcase</p>
+            <h1>Healthcare Data Analytics for Diabetes Risk Prediction</h1>
+          </div>
+          <div class="brand-badge">
+            <span id="brandName">Your Name</span>
+            <small id="brandRoll">Roll No. XXXX</small>
+          </div>
+        </div>
+        <p>
+          This web app presents model performance, key clinical drivers, live patient risk prediction,
+          and presentation-ready reporting based on the Pima Indians Diabetes dataset.
+        </p>
+        <div class="hero-stats">
+          <article>
+            <h3 id="selectedModel">Loading...</h3>
+            <p>Selected Model</p>
+          </article>
+          <article>
+            <h3 id="selectedAccuracy">-</h3>
+            <p>Test Accuracy</p>
+          </article>
+          <article>
+            <h3 id="sampleSplit">-</h3>
+            <p>Train / Test Split</p>
+          </article>
+        </div>
+      </header>
+
+      <section class="grid-two">
+        <article class="panel">
+          <h2>Model Comparison</h2>
+          <div id="scores" class="score-list"></div>
+        </article>
+
+        <article class="panel">
+          <h2>Feature Importance</h2>
+          <div id="importanceBars" class="importance-list"></div>
+        </article>
+      </section>
+
+      <section class="panel">
+        <div class="section-heading">
+          <div>
+            <h2>Demo Mode</h2>
+            <p class="muted">One-click sample patients for fast presentation.</p>
+          </div>
+          <button type="button" id="clearDemoBtn" class="ghost-btn">Clear Form</button>
+        </div>
+        <div class="demo-strip">
+          <button type="button" class="demo-btn" data-demo="low">Low Risk Sample</button>
+          <button type="button" class="demo-btn" data-demo="medium">Moderate Risk Sample</button>
+          <button type="button" class="demo-btn" data-demo="high">High Risk Sample</button>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Predict Patient Risk</h2>
+        <p class="muted">Enter clinical values or use demo mode, then download the result card as PDF from your browser.</p>
+        <form id="predictForm" class="form-grid">
+          <label>
+            Pregnancies
+            <input type="number" name="Pregnancies" min="0" step="1" required>
+          </label>
+          <label>
+            Glucose
+            <input type="number" name="Glucose" min="0" step="0.1" required>
+          </label>
+          <label>
+            Blood Pressure
+            <input type="number" name="BloodPressure" min="0" step="0.1" required>
+          </label>
+          <label>
+            Skin Thickness
+            <input type="number" name="SkinThickness" min="0" step="0.1" required>
+          </label>
+          <label>
+            Insulin
+            <input type="number" name="Insulin" min="0" step="0.1" required>
+          </label>
+          <label>
+            BMI
+            <input type="number" name="BMI" min="0" step="0.1" required>
+          </label>
+          <label>
+            Diabetes Pedigree Function
+            <input type="number" name="DiabetesPedigreeFunction" min="0" step="0.01" required>
+          </label>
+          <label>
+            Age
+            <input type="number" name="Age" min="1" step="1" required>
+          </label>
+          <button type="submit">Run Prediction</button>
+        </form>
+
+        <div id="result" class="result hidden" aria-live="polite"></div>
+      </section>
+
+      <section class="panel print-card-wrap">
+        <div class="section-heading">
+          <div>
+            <h2>Result Card</h2>
+            <p class="muted">Clean printable summary for class presentation.</p>
+          </div>
+          <button type="button" id="downloadPdfBtn" class="ghost-btn">Download PDF</button>
+        </div>
+
+        <article id="printCard" class="print-card">
+          <div class="print-card-head">
+            <div>
+              <p class="print-kicker">Prediction Report</p>
+              <h3>Diabetes Risk Summary</h3>
+            </div>
+            <div class="print-brand">
+              <strong id="printStudentName">Your Name</strong>
+              <span id="printRollNumber">Roll No. XXXX</span>
+            </div>
+          </div>
+
+          <div class="print-metrics">
+            <div>
+              <span>Risk Label</span>
+              <strong id="printRiskLabel">Waiting for result</strong>
+            </div>
+            <div>
+              <span>Probability</span>
+              <strong id="printProbability">-</strong>
+            </div>
+            <div>
+              <span>Model Used</span>
+              <strong id="printModel">Random Forest</strong>
+            </div>
+          </div>
+
+          <p id="printMessage" class="print-message">Run a prediction or a demo sample to generate a presentation-ready result card.</p>
+        </article>
+      </section>
+    </section>
+  </main>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

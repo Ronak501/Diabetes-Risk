@@ -1,0 +1,496 @@
+:root {
+  --bg: #f4efe6;
+  --panel: #fffaf1;
+  --text: #14213d;
+  --muted: #5f6472;
+  --accent: #e76f51;
+  --accent-strong: #bb3f24;
+  --accent-soft: #ffd6c9;
+  --line: #e7d7bf;
+  --ok: #1f8a4c;
+  --warn: #bc6c25;
+  --danger: #a4161a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Space Grotesk", sans-serif;
+  background: radial-gradient(circle at 10% 20%, #fff6de 0%, transparent 40%),
+              radial-gradient(circle at 90% 85%, #ffe3d8 0%, transparent 45%),
+              var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.bg-shape {
+  position: fixed;
+  border-radius: 40px;
+  filter: blur(1px);
+  z-index: -1;
+}
+
+.shape-a {
+  top: -40px;
+  right: -80px;
+  width: 280px;
+  height: 220px;
+  background: linear-gradient(145deg, #f4a261, #e76f51);
+  transform: rotate(22deg);
+  opacity: 0.2;
+}
+
+.shape-b {
+  bottom: -70px;
+  left: -90px;
+  width: 260px;
+  height: 240px;
+  background: linear-gradient(145deg, #2a9d8f, #98c1d9);
+  transform: rotate(-18deg);
+  opacity: 0.18;
+}
+
+.container {
+  width: min(1050px, 92vw);
+  margin: 24px auto 40px;
+  display: grid;
+  gap: 18px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.panel {
+  background: linear-gradient(175deg, #fffdf7, var(--panel));
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: 0 10px 25px rgba(20, 33, 61, 0.08);
+  animation: rise 500ms ease both;
+}
+
+.hero h1,
+h2 {
+  margin: 0 0 10px;
+  font-family: "DM Serif Display", serif;
+  letter-spacing: 0.2px;
+}
+
+h3 {
+  margin: 0;
+}
+
+.kicker {
+  margin: 0 0 8px;
+  color: var(--accent-strong);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1.1px;
+  font-weight: 700;
+}
+
+.hero p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.hero-topline {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.brand-badge {
+  min-width: 180px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #fff, #fff6eb);
+  border: 1px solid var(--line);
+  display: grid;
+  gap: 4px;
+  text-align: right;
+}
+
+.brand-badge span {
+  font-weight: 700;
+}
+
+.brand-badge small,
+.small {
+  color: var(--muted);
+}
+
+.login-shell {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 18px;
+  align-items: stretch;
+}
+
+.login-copy {
+  display: grid;
+  align-content: center;
+  gap: 10px;
+}
+
+.login-copy h1 {
+  margin: 0;
+  font-family: "DM Serif Display", serif;
+  font-size: clamp(2.2rem, 4vw, 4rem);
+  line-height: 1;
+}
+
+.login-form {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 18px;
+  display: grid;
+  gap: 12px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65);
+}
+
+.login-form h2 {
+  margin: 0;
+}
+
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.hero-stats article {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.hero-stats h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.hero-stats p {
+  margin-top: 6px;
+  font-size: 0.84rem;
+}
+
+.grid-two {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.ghost-btn {
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--text);
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-weight: 700;
+}
+
+.demo-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.demo-btn {
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, #fff, #fff8ef);
+  color: var(--text);
+  padding: 12px;
+  border-radius: 14px;
+  font-weight: 700;
+}
+
+.score-list,
+.importance-list {
+  display: grid;
+  gap: 10px;
+}
+
+.score-item,
+.importance-item {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 10px;
+}
+
+.score-row,
+.importance-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.bar-wrap {
+  background: #f4e8d8;
+  border-radius: 100px;
+  height: 10px;
+  overflow: hidden;
+}
+
+.bar {
+  height: 100%;
+  border-radius: 100px;
+  background: linear-gradient(90deg, #f4a261, #e76f51);
+  transition: width 500ms ease;
+}
+
+.importance-item .bar {
+  background: linear-gradient(90deg, #2a9d8f, #1d7874);
+}
+
+.form-grid {
+  margin-top: 12px;
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+label {
+  display: grid;
+  gap: 6px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+input {
+  border: 1px solid #d6c3a8;
+  border-radius: 10px;
+  padding: 10px;
+  font: inherit;
+  background: #fffcf7;
+}
+
+input:focus {
+  border-color: var(--accent);
+  outline: 2px solid #ffd8c8;
+}
+
+button {
+  grid-column: 1 / -1;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #e76f51, #bb3f24);
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  padding: 12px;
+  cursor: pointer;
+}
+
+button:hover {
+  filter: brightness(1.05);
+}
+
+.result {
+  margin-top: 14px;
+  border-radius: 14px;
+  padding: 12px;
+  border: 1px solid transparent;
+  background: #fff;
+}
+
+.result h3 {
+  margin: 0 0 6px;
+}
+
+.result.low {
+  border-color: #c6ecd3;
+  background: #f2fff7;
+}
+
+.result.medium {
+  border-color: #f3d4b0;
+  background: #fff8ef;
+}
+
+.result.high {
+  border-color: #f6bdc0;
+  background: #fff3f4;
+}
+
+.print-card-wrap {
+  page-break-inside: avoid;
+}
+
+.print-card {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: linear-gradient(180deg, #fffdf8, #fff6ea);
+  padding: 18px;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.7);
+}
+
+.print-card-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.print-kicker {
+  margin: 0 0 6px;
+  color: var(--accent-strong);
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+.print-brand {
+  text-align: right;
+  display: grid;
+  gap: 4px;
+}
+
+.print-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.print-metrics div {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 12px;
+  display: grid;
+  gap: 6px;
+}
+
+.print-metrics span {
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.print-message {
+  margin: 14px 0 0;
+  color: var(--text);
+  background: #fff;
+  border: 1px dashed var(--line);
+  border-radius: 14px;
+  padding: 12px;
+}
+
+.print-card.low {
+  border-color: #c6ecd3;
+}
+
+.print-card.medium {
+  border-color: #f3d4b0;
+}
+
+.print-card.high {
+  border-color: #f6bdc0;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 880px) {
+  .grid-two {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .login-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-topline,
+  .print-card-head,
+  .section-heading {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .brand-badge,
+  .print-brand {
+    text-align: left;
+  }
+
+  .demo-strip,
+  .print-metrics {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media print {
+  body {
+    background: #fff;
+  }
+
+  .bg-shape,
+  #loginShell,
+  .grid-two,
+  .demo-strip,
+  #predictForm,
+  #result,
+  .section-heading .ghost-btn,
+  #downloadPdfBtn,
+  .container > section:not(.app-shell) {
+    display: none !important;
+  }
+
+  #appShell {
+    display: block !important;
+  }
+
+  .container {
+    width: 100%;
+    margin: 0;
+  }
+
+  .panel,
+  .print-card {
+    box-shadow: none;
+  }
+
+  .print-card {
+    break-inside: avoid;
+  }
+}
